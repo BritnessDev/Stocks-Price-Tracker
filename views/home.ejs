@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Stock Market Tracker</title>
+</head>
+<body>
+    <div class="flex-col">
+        <h1>Stock Market Tracker</h1>
+        <form action="/submit" method="POST" class="form">
+            <div class="symbol">
+                <label for="symbol">Stock Symbol:</label>
+                <input type="text" id="symbol" name="symbol">
+            </div>
+            <div>
+                <label for="time">Refresh Time in (min):</label>
+                <input list="times" name="time" id="time">
+                <datalist id="times">
+                  <option value="1">
+                  <option value="5">
+                  <option value="15">
+                  <option value="30">
+                  <option value="60">
+                </datalist>
+            </div>
+            <div class="flex-col">
+                <input type="submit">
+            </div>
+           
+        </form>
+        <%  if(price!=null){%>
+            <%  if(marketPrice>price){%>
+                <img src="/images/up.png" alt="up">
+                <%  }%>
+                <% if(marketPrice<price) {%>
+                <img src="/images/down.png" alt="down">
+                <% }%>
+                <% if(marketPrice==price) {%>
+               <h1>No change</h1>
+                <% }%>
+                <div class="result">
+                    <div>
+                        <label for="price">Market Price:</label>
+                        <input type="text" id="marketPrice" name="marketPrice" value=<%=marketPrice %>>
+                    </div>
+                    <div class="price">
+                        <label for="price">Earlier Price:</label>
+                        <input type="text" id="price" name="price" value=<%=price %>>
+                    </div>
+                </div>
+                <%  }%>
+        
+    </div>
+</body>
+</html>
